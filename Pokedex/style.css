@@ -1,9 +1,29 @@
-.main-div {
+.main-bar {
+  height: 60px;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.d-flex {
-  background-color: transparent;
-  padding-top: 10;
-  padding-left: 20%;
+.search-bar {
+  width: 50%;
+  height: 30px;
+  margin-top: 15px;
+}
+
+.input-pokemon {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 3px 3px grey;
+}
+
+.search-pokemon {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 3px 3px grey;
+}
+
+.search-pokemon:hover {
+  background-color: grey;
+  transition: 0.3s;
 }
