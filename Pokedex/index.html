@@ -16,14 +16,25 @@
       <div>
         <form class="pokemon-form">
           <input
+            id="pokemon-name"
             class="input-pokemon"
-            type="search"
+            type="text"
             placeholder="Insert Pokemon"
           />
-          <button class="search-button" type="submit">Search</button>
+          <button type="button" onclick="getName()" class="search-button">
+            Search
+          </button>
         </form>
+        <script src="script.js"></script>
       </div>
     </div>
-    <script src="script.js"></script>
+    <div class="main-pokemon">
+      <div class="pokemon-square">
+        <a id="image">Pokemon</a>
+      </div>
+      <div class="main-stats">
+        <div class="stats-square"></div>
+      </div>
+    </div>
   </body>
 </html>

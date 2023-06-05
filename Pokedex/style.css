@@ -55,3 +55,27 @@
   border-color: #1183d6;
   outline: none;
 }
+
+.main-pokemon {
+  height: 100%;
+  background-color: #1183d6;
+}
+
+.pokemon-square {
+  height: 50%;
+  width: 50%;
+  margin-left: 25%;
+  background-color: aqua;
+}
+
+.main-stats {
+  height: 50%;
+  background-color: chartreuse;
+}
+
+.stats-square {
+  height: 100%;
+  width: 50%;
+  margin-left: 25%;
+  background-color: bisque;
+}
