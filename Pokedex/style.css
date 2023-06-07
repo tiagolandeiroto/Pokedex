@@ -58,24 +58,68 @@
 
 .main-pokemon {
   height: 100%;
-  background-color: #1183d6;
 }
 
 .pokemon-square {
-  height: 50%;
-  width: 50%;
+  height: 60%;
+  width: 60%;
   margin-left: 25%;
-  background-color: aqua;
 }
 
 .main-stats {
   height: 50%;
-  background-color: chartreuse;
 }
 
 .stats-square {
   height: 100%;
-  width: 50%;
+  width: 60%;
   margin-left: 25%;
-  background-color: bisque;
+}
+
+.pokemon-image {
+  position: absolute;
+  margin-left: 450px;
+  margin-top: 150px;
+  width: 43%;
+  height: 43%;
+}
+
+.name {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  margin-left: 250;
+  position: absolute;
+  font-size: 250;
+  opacity: 20%;
+}
+
+.basic-data-box {
+  position: absolute;
+  width: 25%;
+  height: inherit;
+  margin-left: 80px;
+}
+
+.basic-data-name {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  position: absolute;
+  margin-left: 30%;
+  margin-top: 300px;
+}
+
+.basic-data-title {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  position: absolute;
+  margin-top: 350px;
+  width: 22%;
+  list-style-type: none;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+.basic-data-info {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  width: 25%;
+  position: absolute;
+  list-style-type: none;
+  margin-top: 350px;
+  margin-left: 75%;
 }
