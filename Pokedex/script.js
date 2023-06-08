@@ -3,10 +3,17 @@ const pokemon_sprite =
   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
 
 //Prevent page from reloading
-async function getName(event) {
+async function pokedex(event) {
   if (event) {
     event.preventDefault();
   }
+
+  //Get type logo from assets
+  function getLogo(type) {
+    return "assets/icons/" + type + ".svg";
+  }
+
+  //Get pokemon name
   let pokemonName = document.getElementById("pokemon_name").value;
 
   //GET request
@@ -42,8 +49,10 @@ async function getName(event) {
 
   //Capitalize first letter of the pokemon name
   let pokemon_name = pokemon.name;
+  let type_name = pokemon.types[0].type.name;
   let pokemon_name_cap =
     pokemon_name.charAt(0).toUpperCase() + pokemon_name.slice(1);
+  let type_name_cap = type_name.charAt(0).toUpperCase() + type_name.slice(1);
 
   //Pokemon basic stats info
 
@@ -53,9 +62,45 @@ async function getName(event) {
   document
     .getElementById("pokemon_picture")
     .setAttribute("src", pokemon_sprite + pokemon.id + ".png");
+
+  //Pokemon Stats
+  document
+    .getElementById("hp")
+    .setAttribute("value", pokemon.stats[0].base_stat);
+  document.getElementById("hp_label").innerHTML = pokemon.stats[0].base_stat;
+  document
+    .getElementById("attack")
+    .setAttribute("value", pokemon.stats[1].base_stat);
+  document.getElementById("attack_label").innerHTML =
+    pokemon.stats[1].base_stat;
+  document
+    .getElementById("defense")
+    .setAttribute("value", pokemon.stats[2].base_stat);
+  document.getElementById("defense_label").innerHTML =
+    pokemon.stats[2].base_stat;
+  document
+    .getElementById("special_attack")
+    .setAttribute("value", pokemon.stats[3].base_stat);
+  document.getElementById("sa_label").innerHTML = pokemon.stats[3].base_stat;
+  document
+    .getElementById("special_defense")
+    .setAttribute("value", pokemon.stats[4].base_stat);
+  document.getElementById("sd_label").innerHTML = pokemon.stats[4].base_stat;
+  document
+    .getElementById("speed")
+    .setAttribute("value", pokemon.stats[5].base_stat);
+  document.getElementById("speed_label").innerHTML = pokemon.stats[5].base_stat;
+
+  //Change type name
+  document.getElementById("type_name").innerHTML = type_name_cap;
+
+  //Change type logo
+  document
+    .getElementById("type_image")
+    .setAttribute("src", getLogo(pokemon.types[0].type.name));
 }
 
-document.getElementById("pokemon_form").addEventListener("submit", getName);
+document.getElementById("pokemon_form").addEventListener("submit", pokedex);
 
 /*
 const search_term = document.getElementById("pokemon-name");
