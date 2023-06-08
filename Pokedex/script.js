@@ -1,14 +1,13 @@
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 const pokemon_sprite =
-  "hhttps://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
-const pokemon_color = "https://pokeapi.co/api/v2/pokemon-color/";
+  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
 
 //Prevent page from reloading
 async function getName(event) {
   if (event) {
     event.preventDefault();
   }
-  let pokemonName = document.getElementById("pokemon-name").value;
+  let pokemonName = document.getElementById("pokemon_name").value;
 
   //GET request
   let requestOptions = {
@@ -18,17 +17,20 @@ async function getName(event) {
 
   //Fetch api results for pokemon basic data
   const apiResult = await fetch(`${apiUrl}${pokemonName}`);
+  if (apiResult.status == 404) {
+    alert("That's not a real pokemon");
+  }
   const pokemon = await apiResult.json();
 
-  //Fetch api results for pokemon color to change background color
-  /*const apiColorResult = await fetch(`${pokemon_color}${pokemon.id}`);
-  const pokemonColor = await apiColorResult.json();*/
-
-  //Background color change
-  //document.body.style.backgroundColor = pokemonColor.name;
+  //Prevent wrong inputs
+  if (apiResult.status == 404) {
+    alert("Wrong");
+  }
 
   //Pokedex number formatter
   let pokedex = pokemon.id;
+
+  console.log(pokemon);
 
   if (pokedex.toString().length == 1) {
     document.getElementById("pokemon_id").innerHTML = "#00" + pokemon.id;
@@ -45,14 +47,12 @@ async function getName(event) {
 
   //Pokemon basic stats info
 
-  document.getElementById("stats_name").innerHTML = pokemon_name_cap;
-  document.getElementById("height").innerHTML = pokemon.height;
-  document.getElementById("weight").innerHTML = pokemon.weight;
+  document.getElementById("pokemon_name_title").innerHTML = pokemon_name_cap;
 
   //Pokemon image
   document
-    .getElementById("pokemon_image")
-    .setAttribute("src", pokemon.sprites.other.dream_world.front_default);
+    .getElementById("pokemon_picture")
+    .setAttribute("src", pokemon_sprite + pokemon.id + ".png");
 }
 
 document.getElementById("pokemon_form").addEventListener("submit", getName);

@@ -13,46 +13,35 @@
     <title>Pokédex</title>
   </head>
   <body id="main" class="main">
-    <div class="main-bar">
-      <div>
-        <form class="pokemon-form" id="pokemon_form">
-          <input
-            id="pokemon-name"
-            class="input-pokemon"
-            type="text"
-            placeholder="Insert Pokemon or ID"
-          />
-          <button id="search_button" type="submit" class="search-button">
-            Search
-          </button>
-        </form>
-        <script src="script.js"></script>
-      </div>
-    </div>
-    <div class="main-pokemon">
-      <div class="pokemon-square">
-        <div class="basic-data-box">
-          <h2 class="basic-data-name" id="stats_name">Pikachu</h2>
-          <ul id="basic_data" class="basic-data-title">
-            <li>Height</li>
-            <li>Weight</li>
-          </ul>
-          <ul class="basic-data-info">
-            <li id="height">4</li>
-            <li id="weight">60</li>
-          </ul>
+    <div id="left_right" class="left-right">
+      <div id="center" class="center">
+        <div id="top_center" class="top-center">
+          <form class="pokemon-form" id="pokemon_form">
+            <input
+              id="pokemon_name"
+              class="input-pokemon"
+              type="text"
+              placeholder="Insert Pokemon or ID"
+            />
+            <button id="search_button" type="submit" class="search-button">
+              Search
+            </button>
+          </form>
         </div>
-
-        <h1 class="name" id="pokemon_id">#025</h1>
-        <img
-          class="pokemon-image"
-          id="pokemon_image"
-          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg"
-        />
-      </div>
-      <div class="main-stats">
-        <div class="stats-square"></div>
+        <div id="main_center" class="main-center">
+          <div id="pokemon_image" class="pokemon-image">
+            <h1 id="pokemon_name_title" class="pokemon-name-title">Pikachu</h1>
+            <img
+              class="pokemon-picture"
+              id="pokemon_picture"
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
+            />
+            <h1 class="pokemon-id" id="pokemon_id">#025</h1>
+          </div>
+          <div id="pokemon_stats" class="pokemon-stats"></div>
+        </div>
       </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>

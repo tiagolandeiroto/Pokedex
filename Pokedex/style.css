@@ -6,28 +6,41 @@
   display: flex;
 }
 
-.pokemon-form {
-  color: #555;
-  display: flex;
-  padding: 2px;
-  border: 1px solid currentColor;
-  border-radius: 5px;
-  margin: 0 0 30px;
+.left-right {
+  height: 100%;
+  width: 100%;
+  background-color: #e4000f;
+}
+
+.center {
+  height: 100%;
+  width: 60%;
+  margin-left: 20%;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-top: 2px solid black;
+  background-color: rgb(239, 237, 237);
+}
+
+.top-center {
+  height: 6%;
+  width: 100%;
+  border-bottom: 2px solid black;
 }
 
 .input-pokemon {
+  font-family: Montserrat;
   border: none;
   background: transparent;
-  margin: 0;
   padding: 7px 8px;
-  font-size: 14px;
+  font-size: 15px;
   color: inherit;
   border: 1px solid transparent;
   border-radius: inherit;
 }
 
 .input-pokemon::placeholder {
-  color: #bbb;
+  color: #e4000f8e;
 }
 
 .search-button {
@@ -51,75 +64,48 @@
 
 .search-button:focus,
 .input-pokemon:focus {
-  box-shadow: 0 0 3px 0 #1183d6;
-  border-color: #1183d6;
+  box-shadow: 0 0 3px 0 #e4000f8e;
+  border-color: #e4000f8e;
   outline: none;
 }
 
-.main-pokemon {
-  height: 100%;
-}
-
-.pokemon-square {
-  height: 60%;
-  width: 60%;
-  margin-left: 25%;
-}
-
-.main-stats {
-  height: 50%;
-}
-
-.stats-square {
-  height: 100%;
-  width: 60%;
-  margin-left: 25%;
+.main-center {
+  height: 94%;
+  width: 100%;
 }
 
 .pokemon-image {
-  position: absolute;
-  margin-left: 450px;
-  margin-top: 150px;
-  width: 43%;
-  height: 43%;
+  border-right: 2px solid black;
+  text-align: center;
+  position: relative;
+  height: 100%;
+  width: 50%;
+  float: left;
 }
 
-.name {
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  margin-left: 250;
-  position: absolute;
-  font-size: 250;
-  opacity: 20%;
+.pokemon-picture {
+  height: 60%;
 }
 
-.basic-data-box {
-  position: absolute;
-  width: 25%;
-  height: inherit;
-  margin-left: 80px;
+.pokemon-name-title {
+  font-family: Montserrat;
+  font-size: 50;
+  opacity: 30%;
 }
 
-.basic-data-name {
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  position: absolute;
-  margin-left: 30%;
-  margin-top: 300px;
+.pokemon-id {
+  font-family: Montserrat;
+  font-size: 150;
+  opacity: 30%;
 }
 
-.basic-data-title {
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  position: absolute;
-  margin-top: 350px;
-  width: 22%;
-  list-style-type: none;
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-}
-
-.basic-data-info {
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
-  width: 25%;
-  position: absolute;
-  list-style-type: none;
-  margin-top: 350px;
-  margin-left: 75%;
+.pokemon-form {
+  font-family: Montserrat;
+  float: right;
+  height: 100%;
+  width: 23%;
+  color: #555;
+  display: flex;
+  border: 1px solid currentColor;
+  border-radius: 5px;
 }
