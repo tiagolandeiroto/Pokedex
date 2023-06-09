@@ -1,6 +1,7 @@
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 const pokemon_sprite =
   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
+const pokemon_family = "https://pokeapi.co/api/v2/evolution-chain/";
 
 //Prevent page from reloading
 async function pokedex(event) {
@@ -36,27 +37,51 @@ async function pokedex(event) {
 
   //Pokedex number formatter
   let pokedex = pokemon.id;
-
   console.log(pokemon);
 
-  if (pokedex.toString().length == 1) {
-    document.getElementById("pokemon_id").innerHTML = "#00" + pokemon.id;
-  } else if (pokedex.toString().length == 2) {
-    document.getElementById("pokemon_id").innerHTML = "#0" + pokemon.id;
-  } else {
-    document.getElementById("pokemon_id").innerHTML = "#" + pokemon.id;
+  //Get evolutionary chain
+  /* 
+  const familyChain = await fetch(`${pokemon_family}`);
+  const chain = await familyChain.json();
+
+  console.log(JSON.stringify(chain.results));
+
+  let chain_results = chain.resuls;
+  let chain_id = [];
+
+  for (let i = 0; i <= chain.count; i++) {
+    chain_id.push(chain.results[i]);
+    console.log(chain_id[i]);
   }
+
+  //Evolutionary family
+    const evolutionResult = await fetch(`${chain_id}`);
+    const evolutions = await evolutionResult.json();
+
+  console.log();
+
+  console.log(evolutions);
+    */
 
   //Capitalize first letter of the pokemon name
   let pokemon_name = pokemon.name;
-  let type_name = pokemon.types[0].type.name;
   let pokemon_name_cap =
     pokemon_name.charAt(0).toUpperCase() + pokemon_name.slice(1);
-  let type_name_cap = type_name.charAt(0).toUpperCase() + type_name.slice(1);
 
   //Pokemon basic stats info
 
-  document.getElementById("pokemon_name_title").innerHTML = pokemon_name_cap;
+  //document.getElementById("pokemon_name_title").innerHTML = pokemon_name_cap;
+
+  if (pokedex.toString().length == 1) {
+    document.getElementById("pokemon_name_title").innerHTML =
+      pokemon_name_cap + " - #00" + pokemon.id;
+  } else if (pokedex.toString().length == 2) {
+    document.getElementById("pokemon_name_title").innerHTML =
+      pokemon_name_cap + " - #0" + pokemon.id;
+  } else {
+    document.getElementById("pokemon_name_title").innerHTML =
+      pokemon_name_cap + " - #" + pokemon.id;
+  }
 
   //Pokemon image
   document
@@ -91,32 +116,30 @@ async function pokedex(event) {
     .setAttribute("value", pokemon.stats[5].base_stat);
   document.getElementById("speed_label").innerHTML = pokemon.stats[5].base_stat;
 
-  //Change type name
-  document.getElementById("type_name").innerHTML = type_name_cap;
+  //Change type logo/name
 
-  //Change type logo
-  document
-    .getElementById("type_image")
-    .setAttribute("src", getLogo(pokemon.types[0].type.name));
+  let type_name;
+  let type_name_cap;
+  let type_name2;
+  let type_name_cap2;
+
+  if (pokemon.types.length == 1) {
+    document
+      .getElementById("type_image")
+      .setAttribute("src", getLogo(pokemon.types[0].type.name));
+    document.getElementById("type_image2").style.display = "none";
+  }
+  if (pokemon.types.length == 2) {
+    document
+      .getElementById("type_image")
+      .setAttribute("src", getLogo(pokemon.types[0].type.name));
+    document.getElementById("type_image2").style.display = "inline";
+    document.getElementById("type_image2").style.height = 100;
+    document.getElementById("type_image2").style.width = 100;
+    document
+      .getElementById("type_image2")
+      .setAttribute("src", getLogo(pokemon.types[1].type.name));
+  }
 }
 
 document.getElementById("pokemon_form").addEventListener("submit", pokedex);
-
-/*
-const search_term = document.getElementById("pokemon-name");
-const search_btn = document.getElementById("search_button");
-
-const getPokemonData = async (query) => {
-  const url = "https://pokeapi.co/api/v2/pokemon/${query}";
-  const response = await fetch(url);
-
-  if (response.status == 404 || response.statusText == "Not_Found") {
-    alert("Not Found");
-    return;
-  }
-
-  const pokemon = response.json();
-
-  document.getElementById('pokemon_image').setAttribute('src', pokemon.sprite.other.dream_world.front_default);
-};
-*/

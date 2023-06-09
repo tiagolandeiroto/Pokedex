@@ -19,7 +19,7 @@
   border-left: 2px solid black;
   border-right: 2px solid black;
   border-top: 2px solid black;
-  background-color: bisque;
+  background-color: rgb(235, 234, 234);
 }
 
 .top-center {
@@ -81,19 +81,22 @@
 }
 
 .pokemon-picture {
+  margin-top: 40%;
   height: 60%;
 }
 
 .pokemon-name-title {
   font-family: Montserrat;
-  font-size: 50;
-  opacity: 30%;
+  font-size: 70;
+  opacity: 60%;
 }
 
 .pokemon-id {
+  position: relative;
   font-family: Montserrat;
+  margin-top: 30%;
   font-size: 150;
-  opacity: 30%;
+  opacity: 20%;
 }
 
 .pokemon-form {
@@ -115,12 +118,21 @@
 }
 
 .type-name {
-  opacity: 40%;
+  opacity: 60%;
+}
+
+.weak-name {
+  opacity: 60%;
 }
 
 .type-image {
-  height: 10%;
-  width: 10%;
+  height: 100px;
+  width: 100px;
+}
+
+.family {
+  width: 100px;
+  height: 100px;
 }
 
 .main-stats-container {
@@ -143,7 +155,7 @@
 
 .container-label {
   font-family: Montserrat;
-  opacity: 40%;
+  opacity: 60%;
   font-size: 16px;
   margin-left: 12%;
   position: absolute;
