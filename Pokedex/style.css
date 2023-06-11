@@ -81,13 +81,13 @@
 }
 
 .pokemon-picture {
-  margin-top: 40%;
+  margin-top: 50%;
   height: 60%;
 }
 
 .pokemon-name-title {
   font-family: Montserrat;
-  font-size: 70;
+  font-size: 50;
   opacity: 60%;
 }
 
