@@ -2,6 +2,7 @@ const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 const pokemon_sprite =
   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
 const pokemon_family = "https://pokeapi.co/api/v2/evolution-chain/";
+let currentID = 1;
 
 //Prevent page from reloading
 async function pokedex(event) {
@@ -24,9 +25,12 @@ async function pokedex(event) {
   };
 
   //Fetch api results for pokemon basic data
-  const apiResult = await fetch(`${apiUrl}${pokemonName}`);
+  const apiResult = await fetch(
+    pokemonName ? `${apiUrl}${pokemonName}` : `${apiUrl}${currentID}`
+  );
   if (apiResult.status == 404) {
     alert("That's not a real pokemon");
+    return;
   }
   const pokemon = await apiResult.json();
 
@@ -37,38 +41,6 @@ async function pokedex(event) {
 
   //Pokedex number formatter
   let pokedex = pokemon.id;
-
-  /*
-
-  //arrows functions
-  //left-arrow
-  const $leftIcon = document.querySelector(".icon-left");
-  const $leftArrow = document.querySelector(".arrow-left");
-
-  $leftIcon.onclick = () => {
-    if (pokemon.id > 1) {
-      pokemon.id--;
-      document
-        .getElementById("pokemon_form")
-        .addEventListener("submit", pokedex);
-    }
-    $leftArrow.animate([{ left: "0" }, { left: "10px" }, { left: "0" }], {
-      duration: 700,
-      iterations: 2,
-    });
-  };
-  //right-arrow
-  const $rightIcon = document.querySelector(".icon-right");
-  const $rightArrow = document.querySelector(".arrow-right");
-
-  $rightIcon.onclick = () => {
-    $rightArrow.animate([{ left: "0" }, { left: "10px" }, { left: "0" }], {
-      duration: 700,
-      iterations: 2,
-    });
-  };
-
-  */
 
   //Capitalize first letter of the pokemon name
   let pokemon_name = pokemon.name;
@@ -150,3 +122,40 @@ async function pokedex(event) {
   }
 }
 document.getElementById("pokemon_form").addEventListener("submit", pokedex);
+
+//arrows functions
+//left-arrow
+function attachArrowClickEvents() {
+  // left-arrow
+  const $leftIcon = document.querySelector(".icon-left");
+  const $leftArrow = document.querySelector(".arrow-left");
+
+  $leftIcon.onclick = () => {
+    currentID--; // Move to the previous Pokémon ID
+    if (currentID < 1) {
+      currentID = 1; // Ensure the ID doesn't go below 1
+    }
+    pokedex();
+    $leftArrow.animate([{ left: "0" }, { left: "-10px" }, { left: "0" }], {
+      duration: 700,
+      iterations: 2,
+    });
+  };
+
+  // right-arrow
+  const $rightIcon = document.querySelector(".icon-right");
+  const $rightArrow = document.querySelector(".arrow-right");
+
+  $rightIcon.onclick = () => {
+    currentID++;
+    pokedex();
+    $rightArrow.animate([{ left: "0" }, { left: "10px" }, { left: "0" }], {
+      duration: 700,
+      iterations: 2,
+    });
+  };
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  attachArrowClickEvents();
+});
