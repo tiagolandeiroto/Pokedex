@@ -37,31 +37,38 @@ async function pokedex(event) {
 
   //Pokedex number formatter
   let pokedex = pokemon.id;
-  console.log(pokemon);
 
-  //Get evolutionary chain
-  /* 
-  const familyChain = await fetch(`${pokemon_family}`);
-  const chain = await familyChain.json();
+  /*
 
-  console.log(JSON.stringify(chain.results));
+  //arrows functions
+  //left-arrow
+  const $leftIcon = document.querySelector(".icon-left");
+  const $leftArrow = document.querySelector(".arrow-left");
 
-  let chain_results = chain.resuls;
-  let chain_id = [];
+  $leftIcon.onclick = () => {
+    if (pokemon.id > 1) {
+      pokemon.id--;
+      document
+        .getElementById("pokemon_form")
+        .addEventListener("submit", pokedex);
+    }
+    $leftArrow.animate([{ left: "0" }, { left: "10px" }, { left: "0" }], {
+      duration: 700,
+      iterations: 2,
+    });
+  };
+  //right-arrow
+  const $rightIcon = document.querySelector(".icon-right");
+  const $rightArrow = document.querySelector(".arrow-right");
 
-  for (let i = 0; i <= chain.count; i++) {
-    chain_id.push(chain.results[i]);
-    console.log(chain_id[i]);
-  }
+  $rightIcon.onclick = () => {
+    $rightArrow.animate([{ left: "0" }, { left: "10px" }, { left: "0" }], {
+      duration: 700,
+      iterations: 2,
+    });
+  };
 
-  //Evolutionary family
-    const evolutionResult = await fetch(`${chain_id}`);
-    const evolutions = await evolutionResult.json();
-
-  console.log();
-
-  console.log(evolutions);
-    */
+  */
 
   //Capitalize first letter of the pokemon name
   let pokemon_name = pokemon.name;
@@ -69,8 +76,6 @@ async function pokedex(event) {
     pokemon_name.charAt(0).toUpperCase() + pokemon_name.slice(1);
 
   //Pokemon basic stats info
-
-  //document.getElementById("pokemon_name_title").innerHTML = pokemon_name_cap;
 
   if (pokedex.toString().length == 1) {
     document.getElementById("pokemon_name_title").innerHTML =
@@ -145,26 +150,3 @@ async function pokedex(event) {
   }
 }
 document.getElementById("pokemon_form").addEventListener("submit", pokedex);
-
-//arrows functions
-
-//left-arrow
-const $icon = document.querySelector(".icon-left");
-const $leftArrow = document.querySelector(".arrow.left");
-
-$icon.onclick = () => {
-  $arrow.animate([{ left: "0" }, { left: "10px" }, { left: "0" }], {
-    duration: 700,
-    iterations: Infinity,
-  });
-};
-//right-arrow
-const $icon = document.querySelector(".icon-right");
-const $rightArrow = document.querySelector(".arrow-right");
-
-$icon.onclick = () => {
-  $arrow.animate([{ left: "0" }, { left: "10px" }, { left: "0" }], {
-    duration: 700,
-    iterations: Infinity,
-  });
-};
