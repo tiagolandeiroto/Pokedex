@@ -133,13 +133,38 @@ async function pokedex(event) {
     document
       .getElementById("type_image")
       .setAttribute("src", getLogo(pokemon.types[0].type.name));
-    document.getElementById("type_image2").style.display = "inline";
-    document.getElementById("type_image2").style.height = 100;
-    document.getElementById("type_image2").style.width = 100;
+    document.getElementById("type_image").style.display = "inline";
+    document.getElementById("type_image").style.height = 100;
+    document.getElementById("type_image").style.width = 100;
     document
       .getElementById("type_image2")
       .setAttribute("src", getLogo(pokemon.types[1].type.name));
+    document.getElementById("type_image2").style.display = "inline";
+    document.getElementById("type_image2").style.height = 100;
+    document.getElementById("type_image2").style.width = 100;
   }
 }
-
 document.getElementById("pokemon_form").addEventListener("submit", pokedex);
+
+//arrows functions
+
+//left-arrow
+const $icon = document.querySelector(".icon-left");
+const $leftArrow = document.querySelector(".arrow.left");
+
+$icon.onclick = () => {
+  $arrow.animate([{ left: "0" }, { left: "10px" }, { left: "0" }], {
+    duration: 700,
+    iterations: Infinity,
+  });
+};
+//right-arrow
+const $icon = document.querySelector(".icon-right");
+const $rightArrow = document.querySelector(".arrow-right");
+
+$icon.onclick = () => {
+  $arrow.animate([{ left: "0" }, { left: "10px" }, { left: "0" }], {
+    duration: 700,
+    iterations: Infinity,
+  });
+};
