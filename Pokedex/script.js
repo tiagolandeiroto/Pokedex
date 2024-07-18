@@ -66,9 +66,36 @@ async function pokedex(event) {
     .setAttribute("src", pokemon_sprite + pokemon.id + ".png");
 
   //Pokemon Stats
-  document
+
+  function setProgressBarValues(elementId, value) {
+    const progressBar = document.getElementById(elementId);
+    progressBar.style.setProperty("--progress-value", value);
+  }
+
+  setProgressBarValues("hp-label", pokemon.stats[0].base_stat);
+  document.getElementById("hp-text").innerHTML = pokemon.stats[0].base_stat;
+
+  setProgressBarValues("attack-label", pokemon.stats[1].base_stat);
+  document.getElementById("attack-text").innerHTML = pokemon.stats[1].base_stat;
+
+  setProgressBarValues("defense-label", pokemon.stats[2].base_stat);
+  document.getElementById("defense-text").innerHTML =
+    pokemon.stats[2].base_stat;
+
+  setProgressBarValues("sp-attack-label", pokemon.stats[3].base_stat);
+  document.getElementById("sp-attack-text").innerHTML =
+    pokemon.stats[3].base_stat;
+
+  setProgressBarValues("sp-defense-label", pokemon.stats[4].base_stat);
+  document.getElementById("sp-defense-text").innerHTML =
+    pokemon.stats[4].base_stat;
+
+  setProgressBarValues("speed-label", pokemon.stats[5].base_stat);
+  document.getElementById("speed-text").innerHTML = pokemon.stats[5].base_stat;
+
+  /*document
     .getElementById("hp")
-    .setAttribute("value", pokemon.stats[0].base_stat);
+    .setAttribute("--progress-value", pokemon.stats[0].base_stat);
   document.getElementById("hp_label").innerHTML = pokemon.stats[0].base_stat;
   document
     .getElementById("attack")
@@ -92,7 +119,7 @@ async function pokedex(event) {
     .getElementById("speed")
     .setAttribute("value", pokemon.stats[5].base_stat);
   document.getElementById("speed_label").innerHTML = pokemon.stats[5].base_stat;
-
+*/
   //Change type logo/name
 
   let type_name;
@@ -122,39 +149,6 @@ async function pokedex(event) {
   }
 }
 document.getElementById("pokemon_form").addEventListener("submit", pokedex);
-
-//arrows functions
-//left-arrow
-function attachArrowClickEvents() {
-  // left-arrow
-  const $leftIcon = document.querySelector(".icon-left");
-  const $leftArrow = document.querySelector(".arrow-left");
-
-  $leftIcon.onclick = () => {
-    currentID--; // Move to the previous Pokémon ID
-    if (currentID < 1) {
-      currentID = 1; // Ensure the ID doesn't go below 1
-    }
-    pokedex();
-    $leftArrow.animate([{ left: "0" }, { left: "-10px" }, { left: "0" }], {
-      duration: 700,
-      iterations: 2,
-    });
-  };
-
-  // right-arrow
-  const $rightIcon = document.querySelector(".icon-right");
-  const $rightArrow = document.querySelector(".arrow-right");
-
-  $rightIcon.onclick = () => {
-    currentID++;
-    pokedex();
-    $rightArrow.animate([{ left: "0" }, { left: "10px" }, { left: "0" }], {
-      duration: 700,
-      iterations: 2,
-    });
-  };
-}
 
 document.addEventListener("DOMContentLoaded", () => {
   attachArrowClickEvents();
