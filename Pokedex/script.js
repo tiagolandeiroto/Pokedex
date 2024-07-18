@@ -92,34 +92,6 @@ async function pokedex(event) {
 
   setProgressBarValues("speed-label", pokemon.stats[5].base_stat);
   document.getElementById("speed-text").innerHTML = pokemon.stats[5].base_stat;
-
-  /*document
-    .getElementById("hp")
-    .setAttribute("--progress-value", pokemon.stats[0].base_stat);
-  document.getElementById("hp_label").innerHTML = pokemon.stats[0].base_stat;
-  document
-    .getElementById("attack")
-    .setAttribute("value", pokemon.stats[1].base_stat);
-  document.getElementById("attack_label").innerHTML =
-    pokemon.stats[1].base_stat;
-  document
-    .getElementById("defense")
-    .setAttribute("value", pokemon.stats[2].base_stat);
-  document.getElementById("defense_label").innerHTML =
-    pokemon.stats[2].base_stat;
-  document
-    .getElementById("special_attack")
-    .setAttribute("value", pokemon.stats[3].base_stat);
-  document.getElementById("sa_label").innerHTML = pokemon.stats[3].base_stat;
-  document
-    .getElementById("special_defense")
-    .setAttribute("value", pokemon.stats[4].base_stat);
-  document.getElementById("sd_label").innerHTML = pokemon.stats[4].base_stat;
-  document
-    .getElementById("speed")
-    .setAttribute("value", pokemon.stats[5].base_stat);
-  document.getElementById("speed_label").innerHTML = pokemon.stats[5].base_stat;
-*/
   //Change type logo/name
 
   let type_name;
