@@ -33,28 +33,36 @@
       </div>
       <div id="main_center" class="main-center">
         <div id="pokemon_image" class="pokemon-image">
-          <h1 id="pokemon_name_title" class="pokemon-name-title">
-            Bulbasaur - #001
-          </h1>
-          <img
-            class="pokemon-picture"
-            id="pokemon_picture"
-            src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-          />
+          <div class="pokemon-image-title">
+            <h1 id="pokemon_name_title" class="pokemon-name-title">
+              Bulbasaur - #001
+            </h1>
+          </div>
+          <div class="pokemon-image-image">
+            <img
+              class="pokemon-picture"
+              id="pokemon_picture"
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+            />
+          </div>
         </div>
         <div id="pokemon_stats" class="pokemon-stats">
           <div class="type-container">
-            <h1 class="type-name" id="type_name">Types</h1>
-            <img
-              class="type-image"
-              id="type_image"
-              src="assets/icons/grass.svg"
-            />
-            <img
-              class="type-image2"
-              id="type_image2"
-              src="assets/icons/poison.svg"
-            />
+            <div class="type-name-container">
+              <h1 class="type-name" id="type_name">Types</h1>
+            </div>
+            <div class="image-container">
+              <img
+                class="type-image"
+                id="type_image"
+                src="assets/icons/grass.svg"
+              />
+              <img
+                class="type-image2"
+                id="type_image2"
+                src="assets/icons/poison.svg"
+              />
+            </div>
           </div>
           <div class="main-stats-container">
             <div class="progress-title">
@@ -75,7 +83,7 @@
                 aria-valuemax="255"
               >
                 <div
-                  class="progress-bar progress-bar-striped bg-info progress-bar-animated"
+                  class="progress-bar progress-bar-striped bg-warning progress-bar-animated"
                   id="hp-label"
                   role="progressbar"
                   style="--progress-value: 45"
@@ -92,7 +100,7 @@
                 aria-valuemax="255"
               >
                 <div
-                  class="progress-bar progress-bar-striped bg-info progress-bar-animated"
+                  class="progress-bar progress-bar-striped bg-warning progress-bar-animated"
                   id="attack-label"
                   role="progressbar"
                   style="--progress-value: 49"
@@ -109,7 +117,7 @@
                 aria-valuemax="255"
               >
                 <div
-                  class="progress-bar progress-bar-striped bg-info progress-bar-animated"
+                  class="progress-bar progress-bar-striped bg-warning progress-bar-animated"
                   id="defense-label"
                   role="progressbar"
                   style="--progress-value: 49"
@@ -126,7 +134,7 @@
                 aria-valuemax="255"
               >
                 <div
-                  class="progress-bar progress-bar-striped bg-info progress-bar-animated"
+                  class="progress-bar progress-bar-striped bg-warning progress-bar-animated"
                   id="sp-attack-label"
                   role="progressbar"
                   style="--progress-value: 65"
@@ -143,7 +151,7 @@
                 aria-valuemax="255"
               >
                 <div
-                  class="progress-bar progress-bar-striped bg-info progress-bar-animated"
+                  class="progress-bar progress-bar-striped bg-warning progress-bar-animated"
                   id="sp-defense-label"
                   role="progressbar"
                   style="--progress-value: 65"
@@ -160,7 +168,7 @@
                 aria-valuemax="255"
               >
                 <div
-                  class="progress-bar progress-bar-striped bg-info progress-bar-animated"
+                  class="progress-bar progress-bar-striped bg-warning progress-bar-animated"
                   id="speed-label"
                   role="progressbar"
                   style="--progress-value: 45"
