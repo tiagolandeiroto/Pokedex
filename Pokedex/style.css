@@ -29,12 +29,12 @@ body {
   justify-content: center;
   height: 6vh;
   width: 100%;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgb(185, 185, 185);
   border-left: 0;
 }
 
 .input-pokemon {
-  outline: none;
+  outline: none !important;
   width: 100%;
   font-family: "pokemon_solid", sans-serif;
   border: 1px solid #ccc;
@@ -61,7 +61,7 @@ body {
 .pokemon-image {
   display: flex;
   flex-direction: column;
-  border-right: 1px solid black;
+  border-right: 1px solid rgb(185, 185, 185);
   text-align: center;
   height: 100%;
   width: 50%;
@@ -80,9 +80,37 @@ body {
   font-size: 40;
 }
 
+.pokemon-image-image-before{
+  height: 100%;
+  width: 20%;
+  float:left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.before-picture{
+  width: 50%;
+  opacity: 50%;
+}
+
+.pokemon-image-image-after{
+  height: 100%;
+  width: 20%;
+  float:right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.after-picture{
+  width: 50%;
+  opacity: 50%;
+}
+
 .pokemon-image-image {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
@@ -112,7 +140,6 @@ body {
   width: 15vw;
   color: #555;
   display: flex;
-  border: 1px solid currentColor;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;

@@ -1,10 +1,10 @@
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 const pokemon_sprite = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
 const pokemon_family = "https://pokeapi.co/api/v2/evolution-chain/";
-let currentID = 1;
+let currentID;
 
 //Prevent page from reloading
-async function pokedex(event) {
+async function pokedexEvent(event) {
   if (event) {
     event.preventDefault();
   }
@@ -18,23 +18,22 @@ async function pokedex(event) {
   let pokemonName = document.getElementById("pokemon_name").value;
 
   //Fetch api results for pokemon basic data
-  const apiResult = await fetch(
-    pokemonName ? `${apiUrl}${pokemonName}` : `${apiUrl}${currentID}`
-  );
+  const apiResult = await fetch(pokemonName ? `${apiUrl}${pokemonName}` : `${apiUrl}${currentID}`);
   if (apiResult.status == 404) {
     alert("That's not a real pokemon");
     return;
   }
   const pokemon = await apiResult.json();
-
   //Prevent wrong inputs
   if (apiResult.status == 404) {
     alert("Wrong");
   }
 
+  currentID = pokemon.id;
+
   //Pokedex number formatter
   let pokedex = pokemon.id;
-
+  
   //Capitalize first letter of the pokemon name
   let pokemon_name = pokemon.name;
   let pokemon_name_cap =
@@ -42,7 +41,7 @@ async function pokedex(event) {
 
   //Pokemon basic stats info
 
-  if (pokedex.toString().length == 1) {
+  if (pokedex.toString().length === 1) {
     document.getElementById("pokemon_name_title").innerHTML =
       pokemon_name_cap + " - #00" + pokemon.id;
   } else if (pokedex.toString().length == 2) {
@@ -57,6 +56,26 @@ async function pokedex(event) {
   document
     .getElementById("pokemon_picture")
     .setAttribute("src", pokemon_sprite + pokemon.id + ".png");
+
+  //Pokemon small "arrow" images
+
+    if(pokemon.id > 1){
+    document
+    .getElementById("before-picture")
+    .setAttribute("src", pokemon_sprite + (pokemon.id - 1) + ".png")
+    }else {
+    document.getElementById("before-picture").setAttribute("src", "")
+    }
+
+    if(pokemon.id < 1025){
+    document
+    .getElementById("after-picture")
+    .setAttribute("src", pokemon_sprite + (pokemon.id + 1) + ".png")
+    }else {
+    document
+    .getElementById("after-picture")
+    .setAttribute("src", "")
+    }
 
   //Pokemon Stats
 
@@ -97,8 +116,6 @@ async function pokedex(event) {
   for (let i = 0; i < 1; i++) {
     element = pokemon.types[i].type.name;
   }
-
-  console.log(element);
 
   //change background according to Pokemon type
   switch (element) {
@@ -199,4 +216,4 @@ async function pokedex(event) {
     document.getElementById("type_image2").style.width = 100;
   }
 }
-document.getElementById("pokemon_form").addEventListener("submit", pokedex);
+document.getElementById("pokemon_form").addEventListener("submit", pokedexEvent);
