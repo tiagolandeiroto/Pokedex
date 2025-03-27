@@ -1,6 +1,5 @@
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
-const pokemon_sprite =
-  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
+const pokemon_sprite = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
 const pokemon_family = "https://pokeapi.co/api/v2/evolution-chain/";
 let currentID = 1;
 
@@ -17,12 +16,6 @@ async function pokedex(event) {
 
   //Get pokemon name
   let pokemonName = document.getElementById("pokemon_name").value;
-
-  //GET request
-  let requestOptions = {
-    method: "GET",
-    redirect: "follow",
-  };
 
   //Fetch api results for pokemon basic data
   const apiResult = await fetch(
