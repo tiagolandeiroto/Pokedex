@@ -19,13 +19,13 @@ async function pokedexEvent(event) {
 
   //Fetch api results for pokemon basic data
   const apiResult = await fetch(pokemonName ? `${apiUrl}${pokemonName}` : `${apiUrl}${currentID}`);
-  if (apiResult.status == 404) {
+  if (apiResult.status === 404) {
     alert("That's not a real pokemon");
     return;
   }
   const pokemon = await apiResult.json();
   //Prevent wrong inputs
-  if (apiResult.status == 404) {
+  if (apiResult.status === 404) {
     alert("Wrong");
   }
 
@@ -44,7 +44,7 @@ async function pokedexEvent(event) {
   if (pokedex.toString().length === 1) {
     document.getElementById("pokemon_name_title").innerHTML =
       pokemon_name_cap + " - #00" + pokemon.id;
-  } else if (pokedex.toString().length == 2) {
+  } else if (pokedex.toString().length === 2) {
     document.getElementById("pokemon_name_title").innerHTML =
       pokemon_name_cap + " - #0" + pokemon.id;
   } else {
@@ -194,13 +194,13 @@ async function pokedexEvent(event) {
     default:
   }
 
-  if (pokemon.types.length == 1) {
+  if (pokemon.types.length === 1) {
     document
       .getElementById("type_image")
       .setAttribute("src", getLogo(pokemon.types[0].type.name));
     document.getElementById("type_image2").style.display = "none";
   }
-  if (pokemon.types.length == 2) {
+  if (pokemon.types.length === 2) {
     document
       .getElementById("type_image")
       .setAttribute("src", getLogo(pokemon.types[0].type.name));
