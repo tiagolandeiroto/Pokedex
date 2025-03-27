@@ -192,7 +192,6 @@ async function pokedexEvent(event) {
         "linear-gradient(180deg, rgb(255, 133, 239) 0%, #ffffff 100%)";
       break;
     default:
-    // code block
   }
 
   if (pokemon.types.length == 1) {
