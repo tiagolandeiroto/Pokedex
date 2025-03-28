@@ -1,15 +1,11 @@
 const apiUrl = "https://pokeapi.co/api/v2/pokemon/";
 const pokemon_sprite = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/";
+const pokemon_sprite_shiny = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/shiny/";
 const pokemon_family = "https://pokeapi.co/api/v2/evolution-chain/";
-let currentID;
+let currentID = 1;
 let element;
 
-//Prevent page from reloading
-async function pokedexEvent(event) {
-  if (event) {
-    event.preventDefault();
-  }
-
+// Add event listeners for navigation buttons
 document.getElementById("before-picture").addEventListener("click", () => {
   if (currentID > 1) {
     currentID -= 1; // Decrement the current ID
@@ -24,70 +20,62 @@ document.getElementById("after-picture").addEventListener("click", () => {
   }
 });
 
-    //Get pokemon name
+// Prevent page from reloading on form submission
+async function pokedexEvent(event) {
+  if (event) {
+    event.preventDefault();
+  }
+
+  // Get Pokémon name from input
   let pokemonName = document.getElementById("pokemon_name").value;
 
-  //Fetch api results for pokemon basic data
-  try{
+  // Fetch Pokémon data
+  try {
     const apiResult = await fetch(pokemonName ? `${apiUrl}${pokemonName}` : `${apiUrl}${currentID}`);
     if (!apiResult.ok) {
-      alert("That's not a real pokemon");
+      alert("That's not a real Pokémon");
       return;
     }
     const pokemon = await apiResult.json();
     updatePokemon(pokemon);
-  }catch(error){
-    if (apiResult.status === 404) {
-      alert("Wrong");
-    
+  } catch (error) {
+    console.error("Error fetching Pokémon:", error);
+  }
+}
+
+// Fetch Pokémon by ID
+async function fetchPokemonById(id) {
+  try {
+    const response = await fetch(`${apiUrl}${id}`);
+    if (!response.ok) {
+      alert("Pokémon not found");
+      return;
     }
+    const pokemon = await response.json();
+    updatePokemon(pokemon);
+  } catch (error) {
+    console.error("Error fetching Pokémon:", error);
   }
-  
-  async function fetchPokemonById(id){
-    try{
-      const response = await fetch(`${apiUrl}${id}`);
-      if(!response.ok){
-        alert("Pokemon not found");
-        return;
-      }
-      const pokemon = await response.json();
-      updatePokemon(pokemon);
-    }catch(error) {
-      console.error("Error fetching pokemon", error);
-    }
-  }
+}
 
-  //Get type logo from assets
-  function getLogo(type) {
-    return "assets/icons/" + type + ".svg";
-  }
+// Get type logo from assets
+function getLogo(type) {
+  return "assets/icons/" + type + ".svg";
+}
 
-  function updatePokemon(pokemon){
-
-  //Pokedex number formatter
-  let pokedex = pokemon.id;
+// Update Pokémon display
+function updatePokemon(pokemon) {
   currentID = pokemon.id;
-  
-  //Capitalize first letter of the pokemon name
-  let pokemon_name = pokemon.name;
-  let pokemon_name_cap =
-    pokemon_name.charAt(0).toUpperCase() + pokemon_name.slice(1);
 
-  //Pokemon basic stats info
-  if (pokedex.toString().length === 1) {
-    document.getElementById("pokemon_name_title").innerHTML = pokemon_name_cap + " - #00" + pokemon.id;
-  } else if (pokedex.toString().length === 2) {
-    document.getElementById("pokemon_name_title").innerHTML = pokemon_name_cap + " - #0" + pokemon.id;
-  } else {
-    document.getElementById("pokemon_name_title").innerHTML =  pokemon_name_cap + " - #" + pokemon.id;
-  }
+  // Format Pokémon name and ID
+  const pokemon_name_cap = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+  const formattedID = pokemon.id.toString().padStart(3, "0");
+  document.getElementById("pokemon_name_title").innerHTML = `${pokemon_name_cap} - #${formattedID}`;
 
-  //Pokemon image
-  document
-    .getElementById("pokemon_picture").setAttribute("src", pokemon_sprite + pokemon.id + ".png");
+  // Update Pokémon image
+  document.getElementById("pokemon_picture").setAttribute("src", `${pokemon_sprite}${pokemon.id}.png`);
 
-  //Pokemon Stats
-
+  // Update Pokémon stats
   function setProgressBarValues(elementId, value) {
     const progressBar = document.getElementById(elementId);
     progressBar.style.setProperty("--progress-value", value);
@@ -100,64 +88,53 @@ document.getElementById("after-picture").addEventListener("click", () => {
   document.getElementById("attack-text").innerHTML = pokemon.stats[1].base_stat;
 
   setProgressBarValues("defense-label", pokemon.stats[2].base_stat);
-  document.getElementById("defense-text").innerHTML =pokemon.stats[2].base_stat;
+  document.getElementById("defense-text").innerHTML = pokemon.stats[2].base_stat;
 
   setProgressBarValues("sp-attack-label", pokemon.stats[3].base_stat);
-  document.getElementById("sp-attack-text").innerHTML =pokemon.stats[3].base_stat;
+  document.getElementById("sp-attack-text").innerHTML = pokemon.stats[3].base_stat;
 
   setProgressBarValues("sp-defense-label", pokemon.stats[4].base_stat);
-  document.getElementById("sp-defense-text").innerHTML =pokemon.stats[4].base_stat;
+  document.getElementById("sp-defense-text").innerHTML = pokemon.stats[4].base_stat;
 
   setProgressBarValues("speed-label", pokemon.stats[5].base_stat);
   document.getElementById("speed-text").innerHTML = pokemon.stats[5].base_stat;
 
-  for (let i = 0; i < 1; i++) {
-  element = pokemon.types[i].type.name;
-  }
-
-  //change background according to Pokemon type
+  // Update background based on Pokémon type
+  element = pokemon.types[0].type.name;
   changeBackground(element);
+  changeStatColor(element);
 
+  // Update type images
   if (pokemon.types.length === 1) {
-    document
-      .getElementById("type_image")
-      .setAttribute("src", getLogo(pokemon.types[0].type.name));
+    document.getElementById("type_image").setAttribute("src", getLogo(pokemon.types[0].type.name));
     document.getElementById("type_image2").style.display = "none";
-  }
-  if (pokemon.types.length === 2) {
-    document
-      .getElementById("type_image")
-      .setAttribute("src", getLogo(pokemon.types[0].type.name));
-    document.getElementById("type_image").style.display = "inline";
-    document.getElementById("type_image").style.height = 100;
-    document.getElementById("type_image").style.width = 100;
-    document
-      .getElementById("type_image2")
-      .setAttribute("src", getLogo(pokemon.types[1].type.name));
+  } else if (pokemon.types.length === 2) {
+    document.getElementById("type_image").setAttribute("src", getLogo(pokemon.types[0].type.name));
+    document.getElementById("type_image2").setAttribute("src", getLogo(pokemon.types[1].type.name));
     document.getElementById("type_image2").style.display = "inline";
-    document.getElementById("type_image2").style.height = 100;
-    document.getElementById("type_image2").style.width = 100;
   }
 
+  // Update navigation arrows
   beforeAfter(pokemon);
 }
 
-    //Pokemon small "arrow" images
-    async function beforeAfter(pokemon){
-      if(currentID > 1){
-        document.getElementById("before-picture").setAttribute("src", pokemon_sprite + (pokemon.id - 1) + ".png");
-      }else {
-        document.getElementById("before-picture").setAttribute("src", "");
-      }
+// Update navigation arrow images
+function beforeAfter(pokemon) {
+  if (pokemon.id > 1) {
+    document.getElementById("before-picture").setAttribute("src", pokemon_sprite + (pokemon.id - 1) + ".png");
+  } else {
+    document.getElementById("before-picture").setAttribute("src", "");
+  }
 
-      if(pokemon.id < 1025){
-        document.getElementById("after-picture").setAttribute("src", pokemon_sprite + (pokemon.id + 1) + ".png");
-
-    }else {
-      document.getElementById("after-picture").setAttribute("src", "");
-    }
-
+  if (pokemon.id < 1025) {
+    document.getElementById("after-picture").setAttribute("src", pokemon_sprite + (pokemon.id + 1) + ".png");
+  } else {
+    document.getElementById("after-picture").setAttribute("src", "");
   }
 }
-document.getElementById("pokemon_form").addEventListener("submit", pokedexEvent);
 
+// Initialize the page with the first Pokémon
+fetchPokemonById(currentID);
+
+// Add event listener for the Pokémon form submission
+document.getElementById("pokemon_form").addEventListener("submit", pokedexEvent);

@@ -27,7 +27,7 @@
             id="pokemon_name"
             class="input-pokemon"
             type="text"
-            placeholder="Search"
+            placeholder="Pokemon Name"
           />
         </form>
       </div>
@@ -48,7 +48,7 @@
               src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
             />
             <div class="pokemon-image-image-after">
-              <img class="after-picture" id="after-picture" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png"/>
+              <img class="after-picture" id="after-picture" src=""/>
             </div>
           </div>
         </div>
@@ -72,12 +72,12 @@
           </div>
           <div class="main-stats-container">
             <div class="progress-title">
-              <div class="hp">HP:</div>
-              <div class="hp">Attack:</div>
-              <div class="hp">Defense:</div>
-              <div class="hp">Sp.Attack:</div>
-              <div class="hp">Sp.Defense:</div>
-              <div class="hp">Speed:</div>
+              <div class="hp"><a>HP:</a></div>
+              <div class="hp"><a>Attack</a></div>
+              <div class="hp"><a>Defense:</a></div>
+              <div class="hp"><a>Sp.Attack:</a></div>
+              <div class="hp"><a>Sp.Defense:</a></div>
+              <div class="hp"><a>Speed:</a></div>
             </div>
             <div class="progress-container">
               <div
@@ -89,7 +89,7 @@
                 aria-valuemax="255"
               >
                 <div
-                  class="progress-bar progress-bar-striped bg-warning progress-bar-animated"
+                  class="progress-bar"
                   id="hp-label"
                   role="progressbar"
                   style="--progress-value: 45"
@@ -106,7 +106,7 @@
                 aria-valuemax="255"
               >
                 <div
-                  class="progress-bar progress-bar-striped bg-warning progress-bar-animated"
+                  class="progress-bar"
                   id="attack-label"
                   role="progressbar"
                   style="--progress-value: 49"
@@ -123,7 +123,7 @@
                 aria-valuemax="255"
               >
                 <div
-                  class="progress-bar progress-bar-striped bg-warning progress-bar-animated"
+                  class="progress-bar"
                   id="defense-label"
                   role="progressbar"
                   style="--progress-value: 49"
@@ -140,7 +140,7 @@
                 aria-valuemax="255"
               >
                 <div
-                  class="progress-bar progress-bar-striped bg-warning progress-bar-animated"
+                  class="progress-bar"
                   id="sp-attack-label"
                   role="progressbar"
                   style="--progress-value: 65"
@@ -157,7 +157,7 @@
                 aria-valuemax="255"
               >
                 <div
-                  class="progress-bar progress-bar-striped bg-warning progress-bar-animated"
+                  class="progress-bar"
                   id="sp-defense-label"
                   role="progressbar"
                   style="--progress-value: 65"
@@ -174,7 +174,7 @@
                 aria-valuemax="255"
               >
                 <div
-                  class="progress-bar progress-bar-striped bg-warning progress-bar-animated"
+                  class="progress-bar"
                   id="speed-label"
                   role="progressbar"
                   style="--progress-value: 45"
@@ -190,6 +190,7 @@
     <div class="right"></div>
     <script src="script.js"></script>
     <script src="background.js"></script>
+    <script src="statColor.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

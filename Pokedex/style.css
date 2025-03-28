@@ -86,6 +86,10 @@ body {
   opacity: 50%;
 }
 
+.before-picture:hover{
+  opacity: 100%;
+}
+
 .pokemon-image-image-after{
   height: 100%;
   width: 20%;
@@ -100,6 +104,10 @@ body {
   opacity: 50%;
 }
 
+.after-picture:hover{
+  opacity: 100%;
+}
+
 .pokemon-image-image {
   display: flex;
   flex-direction: row;
@@ -108,13 +116,13 @@ body {
 }
 
 .pokemon-picture {
-  width: 60%;
+  width: 50%;
   object-fit: fill;
 }
 
 .pokemon-name-title {
   font-family: "pokemon_solid", sans-serif;
-  margin-top: 7%;
+
   font-size: 3vw;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
@@ -229,13 +237,16 @@ body {
 }
 
 .progress {
-  width: 80%;
+  width: 100%;
   transition: width 0.3s ease-in-out;
-  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .progress-bar {
   width: calc(var(--progress-value) / 255 * 100%);
+  height: 100%;
+  background-color: var(--progress-color, #7AC74C) !important; /* Default color */
+  transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  border-radius: 5px; /* Optional: Rounded corners */
 }
 
 .pokemon-stats {
@@ -247,25 +258,6 @@ body {
 
 .stat {
   display: inline-flex;
-}
-
-progress::-webkit-progress-bar {
-  background-color: #e0e0e0;
-}
-
-progress::-webkit-progress-value {
-  background-color: #76c7c0;
-  border-radius: 5px;
-}
-
-progress::-moz-progress-bar {
-  background-color: #76c7c0;
-  border-radius: 5px;
-}
-
-progress::-ms-fill {
-  background-color: #76c7c0;
-  border-radius: 5px;
 }
 
 .container {
