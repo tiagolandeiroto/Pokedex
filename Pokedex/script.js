@@ -63,9 +63,17 @@ function getLogo(type) {
   return "assets/icons/" + type + ".svg";
 }
 
+  let currentPokemon;
+
 // Update Pokémon display
 function updatePokemon(pokemon) {
+  
+  // Update current Pokémon
+  currentPokemon = pokemon;
+  // Update current ID
   currentID = pokemon.id;
+
+  
 
   // Format Pokémon name and ID
   const pokemon_name_cap = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
@@ -115,6 +123,7 @@ function updatePokemon(pokemon) {
   }
 
   // Update navigation arrows
+  
   beforeAfter(pokemon);
 }
 
