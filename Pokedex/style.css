@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "pokemon_solid", sans-serif;
   color: #333;
 }
 
@@ -139,7 +139,8 @@ body {
 
 .pokemon-name-title {
   font-family: "pokemon_solid", sans-serif;
-
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
   font-size: 3vw;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
@@ -185,6 +186,9 @@ body {
 
 .type-name {
   font-family: "pokemon_solid", sans-serif;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  stroke-opacity: 0;
   font-size: 3vw;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
@@ -234,6 +238,7 @@ body {
 }
 
 .progress-title {
+  font-family: "pokemon_solid";
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -241,6 +246,8 @@ body {
   height: 100%;
   width: 15%;
   padding: 10px;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }
 
 .progress-container {

@@ -46,13 +46,14 @@
               class="pokemon-picture"
               id="pokemon_picture"
               src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+              title="Bulbasaur"
             />
             <div class="pokemon-image-image-after">
               <img class="after-picture" id="after-picture" src=""/>
             </div>
           </div>
           <div class="shiny-button">
-            <input type="image" src="/Resources/Images/shiny.png" id="shiny-normal" class="shiny-normal"/>
+            <input type="image" src="/Resources/Images/shiny.png" id="shiny-normal" class="shiny-normal" title="Shiny" />
           </div>
         </div>
         <div id="pokemon_stats" class="pokemon-stats">
@@ -77,12 +78,12 @@
           </div>
           <div class="main-stats-container">
             <div class="progress-title">
-              <div class="hp"><a>HP:</a></div>
-              <div class="hp"><a>Attack</a></div>
-              <div class="hp"><a>Defense:</a></div>
-              <div class="hp"><a>Sp.Attack:</a></div>
-              <div class="hp"><a>Sp.Defense:</a></div>
-              <div class="hp"><a>Speed:</a></div>
+              <div class="hp"><a id="hp-title">HP:</a></div>
+              <div class="attack"><a id="attack-title">Attack</a></div>
+              <div class="defense"><a id="defense-title">Defense:</a></div>
+              <div class="sp-attack"><a id="sp-attack-title">Sp.Attack:</a></div>
+              <div class="sp-defense"><a id="sp-defense-title">Sp.Defense:</a></div>
+              <div class="speed"><a id="speed-title">Speed:</a id="speed-text"></div>
             </div>
             <div class="progress-container">
               <div

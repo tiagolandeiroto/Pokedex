@@ -5,7 +5,7 @@ function changeBackground(element) {
       electric: '#F7D02C',
       grass: '#7AC74C',
       ice: '#96D9D6',
-      fighting: '#C22E28',
+      fighting: '#9b2058',
       poison: '#A33EA1',
       ground: '#E2BF65',
       flying: '#A98FF3',

@@ -5,7 +5,7 @@ function changeStatColor(element) {
         electric: '#F7D02C',
         grass: '#7AC74C',
         ice: '#96D9D6',
-        fighting: '#C22E28',
+        fighting: '#9b2058',
         ground: '#E2BF65',
         flying: '#A98FF3',
         psychic: '#F95587',
@@ -26,4 +26,12 @@ function changeStatColor(element) {
     document.getElementById("attack-label").style.setProperty("--progress-color", statColor);
     document.getElementById("hp-label").style.setProperty("--progress-color", statColor);
     document.getElementById("speed-label").style.setProperty("--progress-color", statColor);
+    document.getElementById("sp-defense-title").style.setProperty("color", statColor);
+    document.getElementById("sp-attack-title").style.setProperty("color", statColor);
+    document.getElementById("defense-title").style.setProperty("color", statColor);
+    document.getElementById("attack-title").style.setProperty("color", statColor);
+    document.getElementById("hp-title").style.setProperty("color", statColor);
+    document.getElementById("speed-title").style.setProperty("color", statColor);
+    document.getElementById("pokemon_name_title").style.setProperty("color", statColor);
+    document.getElementById("type_name").style.setProperty("color", statColor);
 }

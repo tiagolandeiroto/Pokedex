@@ -82,7 +82,7 @@ function updatePokemon(pokemon) {
 
   // Update Pokémon image
   document.getElementById("pokemon_picture").setAttribute("src", `${pokemon_sprite}${pokemon.id}.png`);
-
+  document.getElementById("pokemon_picture").setAttribute("title", pokemon_name_cap);
   // Update Pokémon stats
   function setProgressBarValues(elementId, value) {
     const progressBar = document.getElementById(elementId);
