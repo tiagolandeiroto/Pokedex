@@ -109,43 +109,17 @@ function updatePokemon(pokemon) {
 
   // Update background based on Pokémon type
   element = pokemon.types[0].type.name;
+  typeLength = pokemon.types.length;
   changeBackground(element);
   changeStatColor(element);
+  
+  // Update navigation arrows
+  beforeAfter(pokemon);
 
   // Update type images
-  if (pokemon.types.length === 1) {
-    document.getElementById("type_image").setAttribute("src", getLogo(pokemon.types[0].type.name));
-    document.getElementById("type_image").title = pokemon.types[0].type.name.charAt(0).toUpperCase() + pokemon.types[0].type.name.slice(1);
-    document.getElementById("type_image2").style.display = "none";
-
-  } else if (pokemon.types.length === 2) {
-    document.getElementById("type_image").setAttribute("src", getLogo(pokemon.types[0].type.name));
-    document.getElementById("type_image").title = pokemon.types[0].type.name.charAt(0).toUpperCase() + pokemon.types[0].type.name.slice(1);
-    document.getElementById("type_image2").setAttribute("src", getLogo(pokemon.types[1].type.name));
-    document.getElementById("type_image2").title = pokemon.types[1].type.name.charAt(0).toUpperCase() + pokemon.types[1].type.name.slice(1);
-    document.getElementById("type_image2").style.display = "inline";
-  }
-
-  // Update navigation arrows
+  typeImage(pokemon);
   
-  beforeAfter(pokemon);
 }
-
-// Update navigation arrow images
-function beforeAfter(pokemon) {
-  if (pokemon.id > 1) {
-    document.getElementById("before-picture").setAttribute("src", pokemon_sprite + (pokemon.id - 1) + ".png");
-  } else {
-    document.getElementById("before-picture").setAttribute("src", "");
-  }
-
-  if (pokemon.id < 1025) {
-    document.getElementById("after-picture").setAttribute("src", pokemon_sprite + (pokemon.id + 1) + ".png");
-  } else {
-    document.getElementById("after-picture").setAttribute("src", "");
-  }
-}
-
 // Initialize the page with the first Pokémon
 fetchPokemonById(currentID);
 
